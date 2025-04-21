@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Task List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button aria-label="Add Task" (click)="goToAddPage()">
+        Add
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let task of tasks">
+      <ion-label>{{ task.title }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
