@@ -1,0 +1,7 @@
+{
+  "name": "on-the-spot",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
