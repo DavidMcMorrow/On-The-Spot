@@ -14,14 +14,34 @@ import { Router } from '@angular/router';
 })
 export class TasksPage implements OnInit {
 
-  tasks = [
-    { title: 'Check fire exits' },
-    { title: 'Inspect lights in hallway' },
-    { title: 'Replace broken AC panel' }
+  schoolData = [
+    { 
+      roomId: 1, 
+      roomName: "Chamber of Secrets", 
+      tasks: [
+        {taskId: 1, taskName: "Kill Snake"}, 
+        {taskId: 2, taskName: "Destory Diary"}
+      ], 
+      items: [
+        {itemId: 1, itemName: "Scary Snake"}, 
+        {itemId: 2, itemName: "Friendly Bird"}
+      ] 
+    },
+    { 
+      roomId: 2, 
+      roomName: "Room of Requirement", 
+      tasks: [
+        {taskId: 3, taskName: "Kill Snake"}, 
+        {taskId: 4, taskName: "Destory Diary"}
+      ], 
+      items: [
+        {itemId: 1, itemName: "Secret Society"}, 
+        {itemId: 2, itemName: "Magic Cabinet"}
+      ] 
+    },
   ];
 
   constructor(private router: Router) {
-   
   }
 
   ngOnInit() {
