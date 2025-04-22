@@ -6,14 +6,17 @@ import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-add',
-  templateUrl: './add.page.html',
-  styleUrls: ['./add.page.scss'],
+  templateUrl: './add.html',
+  styleUrls: ['./add.scss'],
   standalone: true,
   imports: [CommonModule, FormsModule, IonicModule]
 })
 export class AddPage implements OnInit {
 
-  taskTitle: string = '';
+  roomName: string = '';
+  roomTasks: string[] = [];
+  roomItems: string[] = [];
+
 
   constructor(private router: Router) { }
 

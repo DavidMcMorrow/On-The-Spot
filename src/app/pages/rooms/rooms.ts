@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
-  templateUrl: './tasks.page.html',
-  styleUrls: ['./tasks.page.scss'],
+  templateUrl: './rooms.html',
+  styleUrls: ['./rooms.scss'],
   standalone: true,
   imports: [CommonModule, FormsModule, IonicModule ]
 })
-export class TasksPage implements OnInit {
+export class RoomsPage implements OnInit {
 
   schoolData = [
     { 
@@ -25,7 +25,8 @@ export class TasksPage implements OnInit {
       items: [
         {itemId: 1, itemName: "Scary Snake"}, 
         {itemId: 2, itemName: "Friendly Bird"}
-      ] 
+      ],
+      selectedTab: 'tasks'
     },
     { 
       roomId: 2, 
@@ -37,7 +38,8 @@ export class TasksPage implements OnInit {
       items: [
         {itemId: 1, itemName: "Secret Society"}, 
         {itemId: 2, itemName: "Magic Cabinet"}
-      ] 
+      ],
+      selectedTab: 'tasks'
     },
   ];
 
@@ -45,6 +47,10 @@ export class TasksPage implements OnInit {
   }
 
   ngOnInit() {
+    this.schoolData = this.schoolData.map(room => ({
+      ...room,
+      selectedTab: 'tasks'
+    }));
   }
 
   goToAddPage(){

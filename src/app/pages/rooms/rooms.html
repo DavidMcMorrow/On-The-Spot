@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>School Data</ion-title>
+    <ion-buttons slot="end">
+      <ion-button aria-label="Add Task" (click)="goToAddPage()">
+        Add Room
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let room of schoolData">
+      <ion-item slot="header">
+        <ion-label>{{ room.roomName }}</ion-label>
+      </ion-item>
+  
+      <div slot="content">
+        <ion-segment [(ngModel)]="room.selectedTab">
+          <ion-segment-button value="tasks">
+            <ion-label>Tasks</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="items">
+            <ion-label>Items</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+  
+        <div *ngIf="room.selectedTab === 'tasks'">
+          <ion-list>
+            <ion-item *ngFor="let task of room.tasks">
+              <ion-label>{{ task.taskName }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+  
+        <div *ngIf="room.selectedTab === 'items'">
+          <ion-list>
+            <ion-item *ngFor="let item of room.items">
+              <ion-label>{{ item.itemName }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>
