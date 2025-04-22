@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular'; 
 import { Router } from '@angular/router';
+import { RoomsService } from '../service/rooms.service';
 
 
 @Component({
@@ -43,19 +44,25 @@ export class RoomsPage implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private roomsService: RoomsService) {
   }
 
-  ngOnInit() {
-    this.schoolData = this.schoolData.map(room => ({
-      ...room,
-      selectedTab: 'tasks'
-    }));
+  async ngOnInit() {
+    try {
+      this.schoolData = await this.roomsService.getRooms();
+      console.log("this.schoolData", this.schoolData);
+      
+      this.schoolData = this.schoolData.map(room => ({
+        ...room,
+        selectedTab: 'tasks'
+      }));
+    } catch (err) {
+      console.error('Failed to load rooms:', err);
+    }
   }
 
   goToAddPage(){
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/add']);
   }
-
 }

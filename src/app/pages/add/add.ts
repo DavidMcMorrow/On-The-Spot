@@ -1,31 +1,85 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { RoomsService } from '../service/rooms.service';
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.html',
   styleUrls: ['./add.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonicModule]
+  imports: [CommonModule, FormsModule, IonicModule, ReactiveFormsModule ]
 })
 export class AddPage implements OnInit {
 
-  roomName: string = '';
-  roomTasks: string[] = [];
-  roomItems: string[] = [];
+  roomForm!: FormGroup;
 
-
-  constructor(private router: Router) { }
+  constructor(private router: Router, private fb: FormBuilder, private roomsService: RoomsService) { }
 
   ngOnInit() {
+    this.roomForm = this.fb.group({
+      roomName: ['', Validators.required],
+      tasks: this.fb.array([this.fb.control('', Validators.required)]),
+      items: this.fb.array([this.fb.control('', Validators.required)]),
+    });
   }
 
-  submitTask() {
-    (document.activeElement as HTMLElement)?.blur();
+  get tasks() {
+    return this.roomForm.get('tasks') as FormArray;
+  }
+
+  get items() {
+    return this.roomForm.get('items') as FormArray;
+  }
+
+  addTask() {
+    this.tasks.push(this.fb.control('', Validators.required));
+  }
+
+  removeTask(index: number) {
+    this.tasks.removeAt(index);
+  }
+
+  addItem() {
+    this.items.push(this.fb.control('', Validators.required));
+  }
+
+  removeItem(index: number) {
+    this.items.removeAt(index);
+  }
+
+  async onSubmit() {
+    if (this.roomForm.valid) {
+      const newRoom = {
+        RoomName: this.roomForm.value.roomName,
+        Tasks: this.roomForm.value.tasks.map((taskName: string, i: number) => ({
+          taskId: i + 1,
+          taskName,
+        })),
+        Items: this.roomForm.value.items.map((itemName: string, i: number) => ({
+          itemId: i + 1,
+          itemName,
+        })),
+      };
+
+      console.log('New Room:', newRoom);
+      try {
+        await this.roomsService.addRoom(newRoom);
+        this.router.navigate(['/tasks']);
+      } catch (err) {
+        console.error('Failed to save room:', err);
+      }
+    }
+  }
+
+  onCancel(){
+    this.roomForm = this.fb.group({
+      roomName: ['', Validators.required],
+      tasks: this.fb.array([this.fb.control('', Validators.required)]),
+      items: this.fb.array([this.fb.control('', Validators.required)]),
+    });
     this.router.navigate(['/tasks']);
   }
-
 }

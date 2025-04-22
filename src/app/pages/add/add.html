@@ -1,13 +1,43 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Update Room List</ion-title>
+    <ion-title>Add Room</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-label position="floating">Room Name</ion-label>
-    <ion-input [(ngModel)]="roomName"></ion-input>
-  </ion-item>
-  <ion-button expand="full" class="ion-margin-top" (click)="submitTask()">Submit</ion-button>
+  <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Room Name</ion-label>
+      <ion-input formControlName="roomName" required></ion-input>
+    </ion-item>
+
+    <ion-label class="ion-margin-top">Tasks</ion-label>
+    <ng-container formArrayName="tasks">
+      <ion-item *ngFor="let task of tasks.controls; let i = index">
+        <ion-input [formControlName]="i" placeholder="Enter task name"></ion-input>
+        <ion-button color="danger" fill="clear" (click)="removeTask(i)" *ngIf="tasks.length > 1">
+          ✕
+        </ion-button>
+      </ion-item>
+    </ng-container>
+    <ion-button expand="block" fill="outline" (click)="addTask()">+ Add Task</ion-button>
+
+    <ion-label class="ion-margin-top">Items</ion-label>
+    <ng-container formArrayName="items">
+      <ion-item *ngFor="let item of items.controls; let i = index">
+        <ion-input [formControlName]="i" placeholder="Enter item name"></ion-input>
+        <ion-button color="danger" fill="clear" (click)="removeItem(i)" *ngIf="items.length > 1">
+          ✕
+        </ion-button>
+      </ion-item>
+    </ng-container>
+    <ion-button expand="block" fill="outline" (click)="addItem()">+ Add Item</ion-button>
+
+    <ion-button (click)="onCancel()" class="ion-margin-top">
+      Cancel
+    </ion-button>
+    <ion-button type="submit" class="ion-margin-top" [disabled]="roomForm.invalid">
+      Submit Room
+    </ion-button>
+  </form>
 </ion-content>
