@@ -13,45 +13,20 @@ import { RoomsService } from '../service/rooms.service';
   standalone: true,
   imports: [CommonModule, FormsModule, IonicModule ]
 })
-export class RoomsPage implements OnInit {
+export class RoomsPage {
 
-  schoolData = [
-    { 
-      roomId: 1, 
-      roomName: "Chamber of Secrets", 
-      tasks: [
-        {taskId: 1, taskName: "Kill Snake"}, 
-        {taskId: 2, taskName: "Destory Diary"}
-      ], 
-      items: [
-        {itemId: 1, itemName: "Scary Snake"}, 
-        {itemId: 2, itemName: "Friendly Bird"}
-      ],
-      selectedTab: 'tasks'
-    },
-    { 
-      roomId: 2, 
-      roomName: "Room of Requirement", 
-      tasks: [
-        {taskId: 3, taskName: "Kill Snake"}, 
-        {taskId: 4, taskName: "Destory Diary"}
-      ], 
-      items: [
-        {itemId: 1, itemName: "Secret Society"}, 
-        {itemId: 2, itemName: "Magic Cabinet"}
-      ],
-      selectedTab: 'tasks'
-    },
-  ];
+  schoolData: any[] = [];
 
   constructor(private router: Router, private roomsService: RoomsService) {
   }
 
-  async ngOnInit() {
+  ionViewWillEnter(){
+    this.prepareData();
+  }
+
+  async prepareData(){
     try {
       this.schoolData = await this.roomsService.getRooms();
-      console.log("this.schoolData", this.schoolData);
-      
       this.schoolData = this.schoolData.map(room => ({
         ...room,
         selectedTab: 'tasks'

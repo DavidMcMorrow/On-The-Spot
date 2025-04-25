@@ -15,9 +15,6 @@ export class RoomsService {
         persistSession: false,
         detectSessionInUrl: false
       },
-    //   global: {
-    //     multiTab: false
-    //   }
     });
   }
 

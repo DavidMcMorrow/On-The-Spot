@@ -53,15 +53,9 @@ export class AddPage implements OnInit {
   async onSubmit() {
     if (this.roomForm.valid) {
       const newRoom = {
-        RoomName: this.roomForm.value.roomName,
-        Tasks: this.roomForm.value.tasks.map((taskName: string, i: number) => ({
-          taskId: i + 1,
-          taskName,
-        })),
-        Items: this.roomForm.value.items.map((itemName: string, i: number) => ({
-          itemId: i + 1,
-          itemName,
-        })),
+        name: this.roomForm.value.roomName,
+        tasks: this.roomForm.value.tasks,
+        items: this.roomForm.value.items,
       };
 
       console.log('New Room:', newRoom);

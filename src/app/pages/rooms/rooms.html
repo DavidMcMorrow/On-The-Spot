@@ -14,7 +14,7 @@
   <ion-accordion-group>
     <ion-accordion *ngFor="let room of schoolData">
       <ion-item slot="header">
-        <ion-label>{{ room.roomName }}</ion-label>
+        <ion-label>{{ room.name }}</ion-label>
       </ion-item>
   
       <div slot="content">
@@ -30,7 +30,7 @@
         <div *ngIf="room.selectedTab === 'tasks'">
           <ion-list>
             <ion-item *ngFor="let task of room.tasks">
-              <ion-label>{{ task.taskName }}</ion-label>
+              <ion-label>{{ task }}</ion-label>
             </ion-item>
           </ion-list>
         </div>
@@ -38,7 +38,7 @@
         <div *ngIf="room.selectedTab === 'items'">
           <ion-list>
             <ion-item *ngFor="let item of room.items">
-              <ion-label>{{ item.itemName }}</ion-label>
+              <ion-label>{{ item }}</ion-label>
             </ion-item>
           </ion-list>
         </div>
