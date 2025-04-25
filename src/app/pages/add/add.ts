@@ -57,8 +57,7 @@ export class AddPage implements OnInit {
         tasks: this.roomForm.value.tasks,
         items: this.roomForm.value.items,
       };
-
-      console.log('New Room:', newRoom);
+      
       try {
         await this.roomsService.addRoom(newRoom);
         this.router.navigate(['/tasks']);
