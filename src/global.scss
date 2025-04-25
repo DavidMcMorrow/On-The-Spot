@@ -36,10 +36,44 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 html {
     color-scheme: dark;
-  }
+}
   
 body {
---ion-background-color: #00001b;
---ion-background-color-rgb: 0, 0, 27;
-background: var(--ion-background-color);
+    --ion-background-color: #00001b;
+    --ion-background-color-rgb: 0, 0, 27;
+    background: var(--ion-background-color);
+}
+
+.custom-toolbar {
+    --border-color: grey;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    padding: 0 1rem;
+    position: relative;
+  
+    ion-title.center-title {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      color: #f5e8bf;
+      font-size: 2rem;
+      margin: 0;
+    }
+  
+    ion-buttons {
+      display: flex;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .add-button{
+        background-color: #5758ff;
+        border-radius: 2rem;
+        font-weight: bold;
+        width: 5rem;
+        margin-left: 1rem;
+    }
 }

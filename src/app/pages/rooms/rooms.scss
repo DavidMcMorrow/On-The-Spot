@@ -30,7 +30,7 @@
         width: 5rem;
         margin-left: 1rem;
     }
-  }
+}
   
 .accordion-header{
     background-color: #5758ff;
@@ -46,6 +46,10 @@
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 0 0 12px 12px;
+
+    .room-list{
+        background-color: #1e1e1e;
+    }
   }
   
   ion-item {

@@ -28,7 +28,7 @@
         </ion-segment>
   
         <div *ngIf="room.selectedTab === 'tasks'">
-          <ion-list style="background-color: #1e1e1e;">
+          <ion-list class="room-list">
             <ion-item *ngFor="let task of room.tasks" lines="inset">
               <ion-label>{{ task }}</ion-label>
             </ion-item>
@@ -36,7 +36,7 @@
         </div>
   
         <div *ngIf="room.selectedTab === 'items'">
-          <ion-list>
+          <ion-list class="room-list">
             <ion-item *ngFor="let item of room.items" lines="inset">
               <ion-label>{{ item }}</ion-label>
             </ion-item>
