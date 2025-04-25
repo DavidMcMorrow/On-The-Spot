@@ -41,6 +41,16 @@
             </ion-item>
           </ion-list>
         </div>
+        <div class="edit-room-container">
+          <ion-item>
+            <ion-label position="floating">Edit Room Name</ion-label>
+            <ion-input [(ngModel)]="room.updatedName"></ion-input>
+          </ion-item>
+          
+          <ion-button expand="block" color="success" (click)="updateRoomName(room.id, room.updatedName)">
+            Save Name
+          </ion-button>
+        </div>
         <div class="delete-room-container">
           <ion-button color="danger" (click)="deleteRoom(room.id)">DELETE ROOM</ion-button>
         </div>

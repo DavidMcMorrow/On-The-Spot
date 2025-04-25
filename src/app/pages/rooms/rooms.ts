@@ -29,7 +29,8 @@ export class RoomsPage {
       this.schoolData = await this.roomsService.getRooms();
       this.schoolData = this.schoolData.map(room => ({
         ...room,
-        selectedTab: 'tasks'
+        selectedTab: 'tasks',
+        updatedName: room.name
       }));
     } catch (err) {
       console.error('Failed to load rooms:', err);
@@ -48,6 +49,17 @@ export class RoomsPage {
       this.prepareData();
     } catch (err) {
       console.error('Failed to delete room:', err);
+    }
+  }
+
+  async updateRoomName(id: number, newName: string) {
+    if (!newName) return;
+  
+    try {
+      await this.roomsService.updateRoomName(id, newName);
+      this.prepareData();
+    } catch (err) {
+      console.error('Failed to update room:', err);
     }
   }
 }

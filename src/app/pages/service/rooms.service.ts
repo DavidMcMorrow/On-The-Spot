@@ -38,4 +38,14 @@ export class RoomsService {
     
     return data;
   }
+
+  async updateRoomName(id: number, newName: string) {
+    const { data, error } = await this.supabase
+      .from('rooms')
+      .update({ name: newName })
+      .eq('id', id);
+  
+    if (error) throw error;
+    return data;
+  }
 }

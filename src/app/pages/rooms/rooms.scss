@@ -56,6 +56,20 @@
       justify-content: center;
       margin-top: 1rem;
     }
+
+    .edit-room-container {
+      display: flex;
+      margin-top: 0.5rem;
+      align-items: center;
+      justify-content: center;
+    
+      .edit-room-input {
+        flex: 1;
+        --background: #ffffff;
+        --color: #000;
+        padding: 0.5rem;
+      }
+    }
   }
   
   ion-item {
