@@ -1,23 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>School Data</ion-title>
-    <ion-buttons slot="end">
-      <ion-button aria-label="Add Task" (click)="goToAddPage()">
-        Add Room
+<ion-header [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title class="center-title">School Data</ion-title>
+    <ion-buttons slot="end" >
+      <ion-button aria-label="Add Task" (click)="goToAddPage()" class="add-button">
+        ADD
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-accordion-group>
-    <ion-accordion *ngFor="let room of schoolData">
-      <ion-item slot="header">
-        <ion-label>{{ room.name }}</ion-label>
+    <ion-accordion *ngFor="let room of schoolData" value="room-{{room.name}}">
+      <ion-item slot="header" class="accordion-header">
+        <ion-label class="accordion-title">{{ room.name }}</ion-label>
       </ion-item>
   
-      <div slot="content">
+      <div slot="content" class="accordion-content">
         <ion-segment [(ngModel)]="room.selectedTab">
           <ion-segment-button value="tasks">
             <ion-label>Tasks</ion-label>
@@ -28,8 +28,8 @@
         </ion-segment>
   
         <div *ngIf="room.selectedTab === 'tasks'">
-          <ion-list>
-            <ion-item *ngFor="let task of room.tasks">
+          <ion-list style="background-color: #1e1e1e;">
+            <ion-item *ngFor="let task of room.tasks" lines="inset">
               <ion-label>{{ task }}</ion-label>
             </ion-item>
           </ion-list>
@@ -37,7 +37,7 @@
   
         <div *ngIf="room.selectedTab === 'items'">
           <ion-list>
-            <ion-item *ngFor="let item of room.items">
+            <ion-item *ngFor="let item of room.items" lines="inset">
               <ion-label>{{ item }}</ion-label>
             </ion-item>
           </ion-list>

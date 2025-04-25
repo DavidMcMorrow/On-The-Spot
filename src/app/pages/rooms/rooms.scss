@@ -1,0 +1,67 @@
+.custom-toolbar {
+    --border-color: grey;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+    padding: 0 1rem;
+    position: relative;
+  
+    ion-title.center-title {
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+      color: #f5e8bf;
+      font-size: 2rem;
+      margin: 0;
+    }
+  
+    ion-buttons {
+      display: flex;
+      align-items: center;
+      z-index: 1; // Keep it above center title if needed
+    }
+
+    .add-button{
+        background-color: #5758ff;
+        border-radius: 2rem;
+        font-weight: bold;
+        width: 5rem;
+        margin-left: 1rem;
+    }
+  }
+  
+.accordion-header{
+    background-color: #5758ff;
+    .accordion-title {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #ffffff;
+    }
+}
+  
+  .accordion-content {
+    // padding: 16px;
+    background-color: #1e1e1e;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0 0 12px 12px;
+  }
+  
+  ion-item {
+    --background: transparent;
+    --color: white;
+  }
+
+  ion-segment {
+    --background: #28a6eb; // optional
+    --indicator-color: #ffffff; // underline/highlight
+    --color-checked: #ffffff; // active tab text/icon color
+  }
+  
+  ion-segment-button {
+    --color: #ffffff; // normal tab text color
+    --color-checked: #ffffff; // selected tab text/icon color
+    --indicator-color: #ffffff;
+  }
