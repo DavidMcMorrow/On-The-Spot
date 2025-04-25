@@ -53,7 +53,7 @@ export class RoomsPage {
     }
   }
 
-  async updateRoomName(id: number, newName: string) {
+  async updateRoomName(id: number, newName: string | undefined) {
     if (!newName) return;
   
     try {
