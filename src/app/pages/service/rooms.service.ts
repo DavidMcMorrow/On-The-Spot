@@ -27,4 +27,15 @@ export class RoomsService {
     if (error) throw error;
     return data;
   }
+
+  async deleteRooms(id: number){
+    const { data, error } = await this.supabase
+    .from('rooms')
+    .delete()
+    .eq('id', id);
+
+    if (error) throw error;
+    
+    return data;
+  }
 }

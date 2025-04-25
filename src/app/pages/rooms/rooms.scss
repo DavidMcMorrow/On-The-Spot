@@ -50,6 +50,12 @@
     .room-list{
         background-color: #1e1e1e;
     }
+
+    .delete-room-container{
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
   }
   
   ion-item {

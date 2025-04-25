@@ -40,4 +40,14 @@ export class RoomsPage {
     (document.activeElement as HTMLElement)?.blur();
     this.router.navigate(['/add']);
   }
+
+  async deleteRoom(id: number){
+    console.log("id", id);
+    try {
+      await this.roomsService.deleteRooms(id);
+      this.prepareData();
+    } catch (err) {
+      console.error('Failed to delete room:', err);
+    }
+  }
 }
