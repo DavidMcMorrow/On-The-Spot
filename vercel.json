@@ -1,4 +1,5 @@
 {
+    "outputDirectory": "dist/on-the-spot",
     "rewrites": [
       { "source": "/(.*)", "destination": "/index.html" }
     ]
