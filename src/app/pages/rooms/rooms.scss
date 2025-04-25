@@ -20,7 +20,7 @@
     ion-buttons {
       display: flex;
       align-items: center;
-      z-index: 1; // Keep it above center title if needed
+      z-index: 1;
     }
 
     .add-button{
@@ -42,7 +42,6 @@
 }
   
   .accordion-content {
-    // padding: 16px;
     background-color: #1e1e1e;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -55,13 +54,13 @@
   }
 
   ion-segment {
-    --background: #28a6eb; // optional
-    --indicator-color: #ffffff; // underline/highlight
-    --color-checked: #ffffff; // active tab text/icon color
+    --background: #28a6eb; 
+    --indicator-color: #ffffff; 
+    --color-checked: #ffffff;
   }
   
   ion-segment-button {
-    --color: #ffffff; // normal tab text color
-    --color-checked: #ffffff; // selected tab text/icon color
+    --color: #ffffff; 
+    --color-checked: #ffffff;
     --indicator-color: #ffffff;
   }
